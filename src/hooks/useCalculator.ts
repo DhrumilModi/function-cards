@@ -39,8 +39,8 @@ const useCalculator = ({
   const [answer, setAnswer] = useState<number>(Number(inputValue) || 0)
 
   const initialTarget = useMemo<number | undefined>(() => {
-    return config?.functions.find((func: FunctionData) => func.type === "INPUT")
-      ?.id
+    const foundFunc = config?.functions.find((func) => func.type === "INPUT")
+    return foundFunc ? foundFunc.id : undefined
   }, [config])
 
   useEffect(() => {
