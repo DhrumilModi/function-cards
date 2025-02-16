@@ -88,14 +88,18 @@ export const CalculatorProvider: React.FC<{ children: ReactNode }> = ({
 
     console.log("lines", lines)
     return Object.entries(lines)
-      .map(([key, ref]) =>
+      .map(([key]) =>
         (lines[key]?.IN && lines[key]?.OUT) ||
         lines[key]?.target ||
         key === "INPUT" ? (
           <CurvedLineBetweenElements
             key={key}
             input={lines[key].OUT}
-            output={ref.target ? lines[ref.target].IN : lines["OUTPUT"].OUT}
+            output={
+              lines[key]?.target
+                ? lines[lines[key]?.target]?.IN
+                : lines["OUTPUT"].OUT
+            }
             id={key}
           />
         ) : null
