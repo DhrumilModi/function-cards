@@ -4,6 +4,8 @@
 
 A React-based calculator application that allows users to create and manage chains of mathematical functions with dynamic equation editing and real-time calculations.
 
+🚀 **[Live Preview](https://function-cards-dhrumil-modis-projects-0388999a.vercel.app/)**
+
 ## Project Overview
 
 This project implements a function chain calculator where users can:
