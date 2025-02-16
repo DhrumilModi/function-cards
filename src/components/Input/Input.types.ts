@@ -9,6 +9,7 @@ export interface InputProps {
   id?: string | number
   target?: number | string
   formatter?: (value: string) => boolean
+  placeholder?: string
 }
 
 export interface InputProps {

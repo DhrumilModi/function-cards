@@ -32,7 +32,7 @@ const InInputGroup: React.FC<InputProps> = ({
           )}
 
           <Input
-            type="text"
+            type="IN"
             // className="w-full h-[50px] rounded-[15px] border-none  bg-white px-3 text-black outline-none"
             placeholder="Enter text"
             value={value}

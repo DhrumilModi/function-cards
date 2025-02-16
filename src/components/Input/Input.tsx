@@ -38,7 +38,6 @@ const Input: React.FC<InputProps> = ({
         }
       >
         <input
-          type="text"
           value={value}
           onChange={handleChange}
           className={
