@@ -1,9 +1,9 @@
 import { useEffect, useState, useMemo } from "react"
-import { Config, EquationMap } from "@/types/calculator.types"
-import { FunctionData } from "@/components/Card/Card.types"
+import { EquationMap } from "@/types/calculator.types"
+import { ConfigTypes } from "@/config/config.types"
 
 interface UseCalculatorProps {
-  config: Config
+  config: ConfigTypes
   equation: EquationMap
   inputValue: number | string
 }

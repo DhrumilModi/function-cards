@@ -23,7 +23,9 @@ export const CalculatorProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [lines, setLines] = useState<Record<string, LineData>>({})
   const [equation, setEquation] = useState(equationMap)
-  const [inputValue, setInputValue] = useState(initialValueCalculator)
+  const [inputValue, setInputValue] = useState<number | string>(
+    initialValueCalculator
+  )
 
   const updateLines = useCallback(
     (id: string | number, data: HTMLLabelElement) => {
