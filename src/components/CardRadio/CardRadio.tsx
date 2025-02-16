@@ -7,8 +7,9 @@ const CardRadio: React.FC<CardRadioProps> = ({
   type,
   target
 }: CardRadioProps) => {
-  const ref = useRef()
-  const { updateLines, lines } = useCalculatorContext()
+  const ref = useRef<HTMLLabelElement>(null)
+
+  const { updateLines } = useCalculatorContext()
 
   useEffect(() => {
     if (ref.current) {
