@@ -4,8 +4,7 @@ import React, {
   useState,
   ReactNode,
   useMemo,
-  useCallback,
-  useEffect
+  useCallback
 } from "react"
 import defaultConfig from "@/config"
 import useCalculator from "@/hooks/useCalculator"
@@ -68,13 +67,15 @@ export const CalculatorProvider: React.FC<{ children: ReactNode }> = ({
   const cards = useMemo(
     () =>
       defaultConfig.functions.map((func: FunctionConfigTypes) => (
-        <FunctionCard 
-          key={func.id} 
-          func={{
-            ...func,
-            type: func.type as "INPUT" | "OUTPUT" | undefined,
-            equation: equation[func.id] || null
-          } as FunctionData}
+        <FunctionCard
+          key={func.id}
+          func={
+            {
+              ...func,
+              type: func.type as "INPUT" | "OUTPUT" | undefined,
+              equation: equation[func.id] || null
+            } as FunctionData
+          }
         />
       )),
     [equation]
@@ -85,6 +86,7 @@ export const CalculatorProvider: React.FC<{ children: ReactNode }> = ({
       return null
     }
 
+    console.log("lines", lines)
     return Object.entries(lines)
       .map(([key, ref]) =>
         (lines[key]?.IN && lines[key]?.OUT) ||

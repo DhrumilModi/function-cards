@@ -27,10 +27,10 @@ const CurvedLineBetweenElements: React.FC<CurvedLineProps> = ({
     const updatePath = () => {
       console.log("rect1", input, output)
 
-      if (!input?.current || !output?.current) return
+      if (!input || !output) return
 
-      const rect1 = input.current.getBoundingClientRect()
-      const rect2 = output.current.getBoundingClientRect()
+      const rect1 = input.getBoundingClientRect()
+      const rect2 = output.getBoundingClientRect()
 
       // Get bounding box
       const minX = Math.min(rect1.left, rect2.left)
