@@ -1,8 +1,8 @@
 import { RefObject } from "react"
 
 export interface CurvedLineProps {
-  input?: RefObject<HTMLElement>
-  output?: RefObject<HTMLElement>
+  input?: RefObject<HTMLElement> | undefined | null
+  output?: RefObject<HTMLElement> | undefined | null
   p?: number
   strokeColor?: string
   strokeWidth?: number

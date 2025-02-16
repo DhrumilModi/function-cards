@@ -2,18 +2,18 @@ import React from "react"
 import Label from "../Label"
 import Card from "./Card"
 import { useCalculatorContext } from "@/context/CalculatorContext"
-import { FunctionCardProps, FunctionData } from "./Card.types"
+import { FunctionCardProps } from "./Card.types"
 import { InInputGroup, Input } from "../Input"
 
 interface LabelValueProps {
-  value?: string
+  value?: string | number
   onChange?: (value: string) => void
   type: "IN" | "OUT"
   id: string
   target?: string
   disabled?: boolean
   labelText: string
-  labelType?: "success" | "error" | "default"
+  labelType?: "success" | "warning"
 }
 
 const LabelValue: React.FC<LabelValueProps> = (props) => {
@@ -67,7 +67,11 @@ const FunctionCard: React.FC<FunctionCardProps> = ({ func }) => {
           />
         </div>
       )}
-      <Card title={`Function: ${func.id}`} id={func.id} target={func.target}>
+      <Card
+        title={`Function: ${func.id}`}
+        id={func.id?.toString()}
+        target={func.target?.toString()}
+      >
         <Input
           label="Equation"
           value={equation?.[func.id]}

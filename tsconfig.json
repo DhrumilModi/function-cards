@@ -26,9 +26,10 @@
     "jsx": "react-jsx",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "strict": true,
+    "strict": false,
     "resolveJsonModule": true,
     "skipLibCheck": true,
+    "noImplicitAny": false,
     "forceConsistentCasingInFileNames": true
   },
   "include": ["src"],

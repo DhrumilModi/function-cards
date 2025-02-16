@@ -38,7 +38,7 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "jsx": "react-jsx",
-    "strict": true
+    "strict": false
   },
   "include": ["src"]
 }

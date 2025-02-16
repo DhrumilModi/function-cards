@@ -7,7 +7,7 @@ export interface InputProps {
   disabled?: boolean
   type?: "IN" | "OUT"
   id?: string | number
-  target?: number
+  target?: number | string
   formatter?: (value: string) => boolean
 }
 

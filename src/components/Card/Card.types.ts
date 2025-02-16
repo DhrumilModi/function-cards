@@ -2,8 +2,7 @@ export interface CardProps {
   title?: string
   children?: React.ReactNode
   id: string
-  setLines: (lines: object) => void
-  target: string
+  target: string | undefined | null
 }
 
 export interface FunctionData {
