@@ -1,7 +1,7 @@
 interface FunctionConfigTypes {
   id: number
   target: number | null | "OUTPUT"
-  type: "INPUT" | "OUTPUT"  // Made type required
+  type?: "INPUT" | "OUTPUT"  // Made type optional again
   equation?: string
 }
 

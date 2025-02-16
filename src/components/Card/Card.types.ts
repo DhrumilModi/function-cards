@@ -7,7 +7,7 @@ export interface CardProps {
 
 export interface FunctionData {
   id: number | "INPUT" | "OUTPUT"
-  type: "INPUT" | "OUTPUT"
+  type?: "INPUT" | "OUTPUT"
   target: number | null | undefined | "OUTPUT"
   equation?: string | null
 }

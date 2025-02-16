@@ -72,7 +72,7 @@ export const CalculatorProvider: React.FC<{ children: ReactNode }> = ({
           key={func.id} 
           func={{
             ...func,
-            type: func.type as "INPUT" | "OUTPUT",
+            type: func.type as "INPUT" | "OUTPUT" | undefined,
             equation: equation[func.id] || null
           } as FunctionData}
         />
