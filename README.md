@@ -1,5 +1,7 @@
 # Function Chain Calculator
 
+![Product Image](https://github.com/DhrumilModi/function-cards/blob/main/public/product.png?raw=true)
+
 A React-based calculator application that allows users to create and manage chains of mathematical functions with dynamic equation editing and real-time calculations.
 
 ## Project Overview
