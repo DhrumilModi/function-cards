@@ -13,7 +13,7 @@ export interface InputProps {
 }
 
 export interface InputProps {
-  value?: string
+  value?: string | number
   onChange?: (value: string) => void
   label?: string
   disabled?: true | false
