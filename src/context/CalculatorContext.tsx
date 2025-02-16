@@ -26,13 +26,13 @@ export const CalculatorProvider: React.FC<{ children: ReactNode }> = ({
   const [inputValue, setInputValue] = useState(initialValueCalculator)
 
   const updateLines = useCallback(
-    (id: string | number, data: HTMLLabelElement, type, target) => {
+    (id: string | number, data: HTMLLabelElement) => {
       setLines((prev) =>
         Object.assign(
           {},
           {
             ...prev,
-            [id]: { ...prev[id], [type]: data, target }
+            [id]: { ...prev[id], ...data }
           }
         )
       )

@@ -1,7 +1,7 @@
 export interface LineData {
   IN?: HTMLElement | null
   OUT?: HTMLElement | null
-  target?: number
+  target?: number | string
 }
 
 export interface CalculatorContextType {
