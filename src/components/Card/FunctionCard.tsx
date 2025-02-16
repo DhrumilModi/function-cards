@@ -51,6 +51,7 @@ const FunctionCard: React.FC<FunctionCardProps> = ({ func }) => {
             id="INPUT"
             target={initialTarget}
             labelText="Initial value of x"
+            labelType={"warning"}
           />
         </div>
       )}
