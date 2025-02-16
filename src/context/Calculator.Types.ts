@@ -8,7 +8,7 @@ export interface CalculatorContextType {
   lines: Record<string, LineData>
   updateLines: (
     id: string | number,
-    data: LineData,
+    data: HTMLElement,
     type: "IN" | "OUT",
     target?: string
   ) => void

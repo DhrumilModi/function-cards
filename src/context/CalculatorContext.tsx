@@ -29,16 +29,16 @@ export const CalculatorProvider: React.FC<{ children: ReactNode }> = ({
   )
 
   const updateLines = useCallback(
-    (id: string | number, data: HTMLLabelElement) => {
-      setLines((prev) =>
-        Object.assign(
-          {},
-          {
-            ...prev,
-            [id]: { ...prev[id], ...data }
-          }
-        )
-      )
+    (
+      id: string | number,
+      data: HTMLElement,
+      type: "IN" | "OUT",
+      target?: number | string
+    ) => {
+      setLines((prev) => ({
+        ...prev,
+        [id]: { ...prev[id], [type]: data, target }
+      }))
     },
     []
   )
@@ -113,7 +113,7 @@ export const CalculatorProvider: React.FC<{ children: ReactNode }> = ({
     cards,
     updateEquation,
     linesDraw: linesArray,
-    initialTarget
+    initialTarget: String(initialTarget)
   }
 
   return (

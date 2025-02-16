@@ -8,7 +8,7 @@ const CardRadio: React.FC<CardRadioProps> = ({ id, type, target }) => {
 
   useEffect(() => {
     if (ref.current) {
-      updateLines(id, { [type]: ref.current, target }, type)
+      updateLines(id, ref.current, type, String(target))
     }
   }, [id, type, target, updateLines]) // Ensure proper dependency updates
 
