@@ -13,6 +13,8 @@ import { equationMap, initialValueCalculator } from "@/config/config"
 import FunctionCard from "@/components/Card"
 import { CalculatorContextType, LineData } from "./Calculator.Types"
 import CurvedLineBetweenElements from "@/components/Lines/CurvedLineBetweenElements"
+import { FunctionData } from "@/components/Card/Card.types"
+import { FunctionConfigTypes } from "@/config/config.types"
 
 const CalculatorContext = createContext<CalculatorContextType | undefined>(
   undefined
@@ -42,10 +44,6 @@ export const CalculatorProvider: React.FC<{ children: ReactNode }> = ({
     []
   )
 
-  useEffect(() => {
-    console.log("lines", lines)
-  }, [lines])
-
   const { outputValue, initialTarget } = useCalculator({
     config: defaultConfig,
     equation,
@@ -69,10 +67,17 @@ export const CalculatorProvider: React.FC<{ children: ReactNode }> = ({
 
   const cards = useMemo(
     () =>
-      defaultConfig.functions.map((func) => (
-        <FunctionCard key={func.id} func={func} />
+      defaultConfig.functions.map((func: FunctionConfigTypes) => (
+        <FunctionCard 
+          key={func.id} 
+          func={{
+            ...func,
+            type: func.type as "INPUT" | "OUTPUT",
+            equation: equation[func.id] || null
+          } as FunctionData}
+        />
       )),
-    []
+    [equation]
   )
 
   const linesArray = useMemo(() => {
@@ -95,8 +100,6 @@ export const CalculatorProvider: React.FC<{ children: ReactNode }> = ({
       )
       .filter((x) => x)
   }, [lines])
-
-  console.log("initialTarget", initialTarget)
 
   const value = {
     lines,

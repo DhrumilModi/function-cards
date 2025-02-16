@@ -48,7 +48,7 @@ const useCalculator = ({
       let currentVal = Number(inputValue)
       const newValues: Record<number, number> = { [initialTarget]: currentVal }
 
-      const processFunction = (funcId: number): void => {
+      const processFunction = (funcId: number | string): void => {
         const func = config.functions.find((f) => f.id === funcId)
         if (!func) return
 

@@ -9,7 +9,7 @@ export interface FunctionData {
   id: number | "INPUT" | "OUTPUT"
   type: "INPUT" | "OUTPUT"
   target: number | null | undefined | "OUTPUT"
-  equation: string | null
+  equation?: string | null
 }
 
 export interface FunctionCardProps {
