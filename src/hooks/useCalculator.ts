@@ -1,0 +1,73 @@
+import { useEffect, useState, useMemo } from "react"
+import { Config, EquationMap } from "@/types/calculator.types"
+import { FunctionData } from "@/components/Card/Card.types"
+
+interface UseCalculatorProps {
+  config: Config
+  equation: EquationMap
+  inputValue: number | string
+}
+
+interface UseCalculatorReturn {
+  outputValue: number
+  initialTarget?: number
+}
+
+const evaluateEquation = (equation: string, x: number): number => {
+  if (!equation) {
+    return x
+  }
+
+  const jsEquation: string = equation
+    .replace(/\^/g, "**")
+    .replace(/(\d)(x)/gi, "$1*$2")
+  const evalString = jsEquation.replace(/x/g, x.toString())
+
+  try {
+    return eval(evalString)
+  } catch (error) {
+    console.error("Error evaluating equation:", equation, x, error)
+    return x
+  }
+}
+
+const useCalculator = ({
+  config,
+  equation,
+  inputValue
+}: UseCalculatorProps): UseCalculatorReturn => {
+  const [answer, setAnswer] = useState<number>(Number(inputValue) || 0)
+
+  const initialTarget = useMemo<number | undefined>(() => {
+    return config?.functions.find((func: FunctionData) => func.type === "INPUT")
+      ?.id
+  }, [config])
+
+  useEffect(() => {
+    if (inputValue && initialTarget !== undefined) {
+      let currentVal = Number(inputValue)
+      const newValues: Record<number, number> = { [initialTarget]: currentVal }
+
+      const processFunction = (funcId: number): void => {
+        const func = config.functions.find((f) => f.id === funcId)
+        if (!func) return
+
+        currentVal = evaluateEquation(equation[funcId] || "", currentVal)
+        newValues[funcId] = currentVal
+
+        if (func.target) {
+          processFunction(func.target)
+        }
+      }
+
+      processFunction(initialTarget)
+      setAnswer(currentVal)
+    } else {
+      setAnswer(0)
+    }
+  }, [equation, inputValue, initialTarget, config.functions])
+
+  return { outputValue: answer, initialTarget }
+}
+
+export default useCalculator
