@@ -64,22 +64,20 @@ export const CalculatorProvider: React.FC<{ children: ReactNode }> = ({
     }
   }, [])
 
-  const cards = useMemo(
-    () =>
-      defaultConfig.functions.map((func: FunctionConfigTypes) => (
-        <FunctionCard
-          key={func.id}
-          func={
-            {
-              ...func,
-              type: func.type as "INPUT" | "OUTPUT" | undefined,
-              equation: equation[func.id] || null
-            } as FunctionData
-          }
-        />
-      )),
-    [equation]
-  )
+  const cards = useMemo(() => {
+    return defaultConfig.functions.map((func: FunctionConfigTypes) => (
+      <FunctionCard
+        key={func.id}
+        func={
+          {
+            ...func,
+            type: func.type as "INPUT" | "OUTPUT" | undefined,
+            equation: equation[func.id] || null
+          } as FunctionData
+        }
+      />
+    ))
+  }, [equation])
 
   const linesArray = useMemo(() => {
     if (!cards) {

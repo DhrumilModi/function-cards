@@ -18,7 +18,7 @@ interface LabelValueProps {
 
 const LabelValue: React.FC<LabelValueProps> = (props) => {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col ">
       <Label className="mb-1" type={props.labelType}>
         {props.labelText}
       </Label>
@@ -37,36 +37,8 @@ const FunctionCard: React.FC<FunctionCardProps> = ({ func }) => {
     initialTarget
   } = useCalculatorContext()
 
-  return (
-    <div
-      key={func.id}
-      className="flex flex-col-reverse xl:flex-row xl:items-end relative"
-    >
-      {func.type === "INPUT" && (
-        <div className="flex flex-col mt-3 xl:mt-0 justify-center gap-30 xl:absolute -left-31.5">
-          <LabelValue
-            value={inputValue}
-            onChange={updateInitialValue}
-            type="OUT"
-            id="INPUT"
-            target={initialTarget}
-            labelText="Initial value of x"
-            labelType={"warning"}
-          />
-        </div>
-      )}
-      {func.type === "OUTPUT" && (
-        <div className="flex flex-col mt-3 xl:mt-0 align-bottom xl:absolute -right-33">
-          <LabelValue
-            value={outputValue}
-            type="IN"
-            id="OUTPUT"
-            disabled
-            labelText="Final output y"
-            labelType={"success"}
-          />
-        </div>
-      )}
+  const CardComponent = (
+    <div className="md:w-[235px] inline-block mt-29.5">
       <Card
         title={`Function: ${func.id}`}
         id={func.id?.toString()}
@@ -86,6 +58,48 @@ const FunctionCard: React.FC<FunctionCardProps> = ({ func }) => {
       </Card>
     </div>
   )
+
+  if (func.type === "INPUT") {
+    return (
+      <div className="inline-block mr-16 ">
+        <div className=" flex flex-row items-end ">
+          <div className="mr-4">
+            <LabelValue
+              value={inputValue}
+              onChange={updateInitialValue}
+              type="OUT"
+              id="INPUT"
+              target={initialTarget}
+              labelText="Initial value of x"
+              labelType={"warning"}
+            />
+          </div>
+
+          {CardComponent}
+        </div>
+      </div>
+    )
+  } else if (func.type === "OUTPUT") {
+    return (
+      <div className="inline-block ml-16">
+        <div className=" flex flex-row items-end ">
+          {CardComponent}
+          <div className="ml-4">
+            <LabelValue
+              value={outputValue}
+              type="IN"
+              id="OUTPUT"
+              disabled
+              labelText="Final output y"
+              labelType={"success"}
+            />
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  return <div className="inline-block ml-16 mr-16">{CardComponent}</div>
 }
 
 export default FunctionCard

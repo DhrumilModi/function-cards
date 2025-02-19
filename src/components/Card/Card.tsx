@@ -4,7 +4,7 @@ import CardRadio from "../CardRadio"
 
 const Card: React.FC<CardProps> = ({ title, children, id, target }) => {
   return (
-    <div className=" bg-white rounded-[15px] overflow-hidden border border-[#DFDFDF] shadow-[0px_0px_6px_0px_rgba(0,0,0,0.05)]">
+    <div className=" bg-white rounded-[15px] overflow-hidden border border-[#DFDFDF] shadow-[0px_0px_6px_0px_rgba(0,0,0,0.05)] ">
       <div className="py-[13px] px-[20px] min-h-[251px] min-w-[235px] flex flex-col justify-between">
         <div>
           {title && (
